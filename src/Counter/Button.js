@@ -1,28 +1,19 @@
-import React, { useState } from "react";
-import { Display } from "./Display";
+import {
+  handleOnIncrease,
+  handleOnDecrease,
+  handleOnTwice,
+} from "./CounterSlice";
+import { useDispatch } from "react-redux";
 
 export const Button = () => {
-  const [count, setCount] = useState(0);
-  const handleOnIncrease = () => {
-    setCount(count + 1);
-    console.log(count);
-  };
-  const handleOnDecrease = () => {
-    setCount(count - 1);
-    console.log(count);
-  };
-  const handleOnTwice = () => {
-    setCount(count + 2);
-    console.log(count);
-  };
+  const dispatch = useDispatch();
   return (
     <div>
       <p>
-        <button onClick={handleOnIncrease}>+</button>
-        <button onClick={handleOnDecrease}>-</button>
-        <button onClick={handleOnTwice}>++</button>
+        <button onClick={() => dispatch(handleOnIncrease())}>+</button>
+        <button onClick={() => dispatch(handleOnDecrease())}>-</button>
+        <button onClick={() => dispatch(handleOnTwice())}>++</button>
       </p>
-      <Display count={count} />
     </div>
   );
 };

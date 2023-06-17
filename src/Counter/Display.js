@@ -1,4 +1,8 @@
 import React from "react";
-export const Display = ({ count }) => {
-  return <div>{count}</div>;
+import { useSelector } from "react-redux";
+export const Display = () => {
+  const { counter } = useSelector((state) => {
+    return state.counterData;
+  });
+  return <div>{counter}</div>;
 };
